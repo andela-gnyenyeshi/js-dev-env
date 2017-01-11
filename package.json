@@ -4,9 +4,11 @@
   "description": "JavaScript development environment Pluralsight course by Cory House",
   "scripts": {
     "prestart": "babel-node buildScripts/start.js",
-    "start": "npm-run-all --parallel security-check open:src",
+    "start": "npm-run-all --parallel security-check open:src lint:watch",
     "open:src": "babel-node buildScripts/srcServer.js",
     "security-check": "nsp check",
+    "lint": "esw webpack.config.* src buildScripts --color",
+    "lint:watch": "npm run lint -- --watch",
     "localtunnel": "lt --port 300 --subdomain kidoti",
     "share": "npm-run-all --parallel open:src localtunnel"
   },
@@ -28,6 +30,8 @@
     "cross-env": "3.1.3",
     "css-loader": "0.25.0",
     "eslint": "3.8.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-config-airbnb-base": "^11.0.1",
     "eslint-plugin-import": "2.0.1",
     "eslint-watch": "2.1.14",
     "express": "4.14.0",
